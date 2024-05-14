@@ -89,6 +89,11 @@ usermod -aG docker jenkins
 usermod -aG docker ubuntu
 systemctl restart docker
 ```
+For verification 
+```linux
+sudo su - jenkins
+docker run hello-world
+```
 restart Jenkins.
 ```linux
 http://<ec2-instance-public-ip>:8080/restart
