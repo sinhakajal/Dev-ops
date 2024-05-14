@@ -22,7 +22,7 @@ pipeline {
         docker { image 'node:17-alpine' }
       }
       steps {
-        sh 'javac HelloWorld.java;java HelloWorld'
+        sh 'java HelloWorld'
       }
     }
   }
