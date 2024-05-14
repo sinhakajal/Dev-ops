@@ -17,5 +17,13 @@ pipeline {
         sh 'node --version'
       }
     }
+    stage('Java Hello-World') {
+      agent {
+        docker { image 'node:17-alpine' }
+      }
+      steps {
+        sh 'javac HelloWorld.java;java HelloWorld'
+      }
+    }
   }
 }
