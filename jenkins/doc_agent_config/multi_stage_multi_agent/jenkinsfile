@@ -19,14 +19,21 @@ pipeline {
     }
     stage('Java Hello-World') {
       agent {
-        docker { image 'openjdk:latest' }
+        docker { 
+          image 'openjdk:latest'
+          args '-v $PWD:/workspace' // Mount the current directory into the container
+        }
       }
       steps {
-        sh 'pwd'
-        sh 'cd jenkins/doc_agent_config/multi_stage_multi_agent'
-        sh 'pwd'
-        sh 'javac HelloWorld.java'
-        sh 'java HelloWorld'        
+        script {
+          // Change the directory to where HelloWorld.java is located
+          dir('/var/lib/jenkins/workspace/Docker_agent_configuration/jenkins/doc_agent_config/multi_stage_multi_agent') {
+            // Compile HelloWorld.java
+            sh 'javac HelloWorld.java'
+            // Run the compiled Java program
+            sh 'java HelloWorld'
+          }
+        }
       }
     }
   }
