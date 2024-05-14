@@ -23,7 +23,9 @@ pipeline {
       }
       steps {
         sh 'pwd'
-        
+        sh 'cd jenkins/doc_agent_config/multi_stage_multi_agent'
+        sh 'javac HelloWorld.java'
+        sh 'java HelloWorld'        
       }
     }
   }
