@@ -19,9 +19,10 @@ pipeline {
     }
     stage('Java Hello-World') {
       agent {
-        docker { image 'node:17-alpine' }
+        docker { image 'openjdk:latest' }
       }
       steps {
+        sh 'javac HelloWorld.java'
         sh 'java HelloWorld'
       }
     }
